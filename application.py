@@ -3,9 +3,7 @@ from flask import Flask,request,jsonify,render_template
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-
-import os                                                           #
-
+                                                        
 application = Flask(__name__)
 app=application
 
@@ -13,19 +11,6 @@ app=application
 ## Importing ridge regressor and standard scaler pickle
 ridge_model = pickle.load(open('models/ridge.pkl','rb'))
 standard_scaler = pickle.load(open('models/scaler.pkl','rb'))
-
-print("Scaler expects:", standard_scaler.n_features_in_)             #
-print("Model expects:", ridge_model.n_features_in_)                  #
-
-
-print("Model path:", os.path.abspath('models/ridge.pkl'))
-print("Scaler path:", os.path.abspath('models/scaler.pkl'))
-print("Model features:", ridge_model.n_features_in_)
-print("Scaler features:", standard_scaler.n_features_in_)
-print("Scaler feature names:", standard_scaler.feature_names_in_)
-
-
-
 
 @app.route("/")
 def index():
